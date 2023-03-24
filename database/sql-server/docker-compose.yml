@@ -1,0 +1,21 @@
+version: "3.2"
+services:
+
+  sql-server:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2019-CU5-ubuntu-18.04
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "YOUR_PASSWORD"
+      ACCEPT_EULA: "Y"
+    volumes: 
+      - sqlsystem:/var/opt/mssql/
+      - sqldata:/var/opt/sqlserver/data
+      - sqllog:/var/opt/sqlserver/log
+      - sqlbackup:/var/opt/sqlserver/backup
+volumes:
+  sqlsystem:
+  sqldata:
+  sqllog:
+  sqlbackup:
